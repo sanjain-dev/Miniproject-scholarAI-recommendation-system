@@ -6,9 +6,27 @@ import { getFirestore, doc, getDocFromServer } from 'firebase/firestore';
 import firebaseConfig from '../firebase-applet-config.json';
 
 // Initialize Firebase SDK
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
-export const auth = getAuth(app);
+let app;
+let db;
+let auth;
+
+try {
+  app = initializeApp(firebaseConfig);
+  db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+  auth = getAuth(app);
+} catch (error) {
+  console.error("Firebase initialization failed. Falling back to local auth mode.", error);
+  app = initializeApp({
+    apiKey: "demo-key",
+    authDomain: "localhost",
+    projectId: "scholarai-local",
+    appId: "scholarai-local-app",
+  });
+  db = getFirestore(app);
+  auth = getAuth(app);
+}
+
+export { db, auth };
 export const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: "select_account" });
 export const githubProvider = new GithubAuthProvider();
