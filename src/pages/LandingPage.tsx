@@ -35,6 +35,7 @@ const LandingPage: React.FC = () => {
   return (
     <div className="flex flex-col items-center overflow-hidden">
       <section className="relative w-full max-w-7xl px-4 pb-28 pt-16 md:pt-24">
+        <div className="pointer-events-none absolute inset-x-0 top-8 -z-10 h-[34rem] bg-[radial-gradient(circle_at_18%_18%,rgba(245,201,118,0.16),transparent_28%),radial-gradient(circle_at_78%_20%,rgba(255,255,255,0.08),transparent_22%),radial-gradient(circle_at_52%_62%,rgba(210,154,57,0.14),transparent_30%)] blur-3xl" />
         <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="relative z-10">
             <motion.div
@@ -51,10 +52,10 @@ const LandingPage: React.FC = () => {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
-              className="display-font max-w-4xl text-5xl font-bold leading-[0.94] text-white md:text-7xl xl:text-[5.6rem]"
+              className="display-font max-w-4xl text-5xl font-bold leading-[0.9] text-white md:text-7xl xl:text-[5.8rem]"
             >
-              The premium scholarship cockpit for
-              <span className="bg-[linear-gradient(135deg,#fff8ee_10%,#f5c976_50%,#d29a39_100%)] bg-clip-text text-transparent"> ambitious students worldwide.</span>
+              Discover global scholarships through a
+              <span className="bg-[linear-gradient(135deg,#fff8ee_10%,#f5c976_46%,#d29a39_100%)] bg-clip-text text-transparent"> premium intelligent experience.</span>
             </motion.h1>
 
             <motion.p
@@ -63,7 +64,7 @@ const LandingPage: React.FC = () => {
               transition={{ duration: 0.55, delay: 0.1 }}
               className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl"
             >
-              ScholarAI blends elegant interfaces, dynamic guidance, and deeply personalized matching so every search feels premium from the first click.
+              ScholarAI helps students search smarter, compare faster, and move confidently with a refined scholarship platform built for real global opportunities.
             </motion.p>
 
             <motion.div
@@ -110,7 +111,7 @@ const LandingPage: React.FC = () => {
             transition={{ duration: 0.65, delay: 0.18 }}
             className="relative"
           >
-            <div className="premium-ring soft-shimmer relative overflow-hidden rounded-[34px] border border-white/12 bg-[radial-gradient(circle_at_top_left,rgba(245,201,118,0.18),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02)),rgba(7,14,28,0.92)] p-6 shadow-[0_30px_100px_rgba(2,8,23,0.5)]">
+            <div className="premium-ring soft-shimmer relative overflow-hidden rounded-[34px] border border-white/12 bg-[radial-gradient(circle_at_top_left,rgba(245,201,118,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(210,154,57,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02)),rgba(7,14,28,0.92)] p-6 shadow-[0_30px_100px_rgba(2,8,23,0.5)]">
               <div className="mb-6 flex items-center justify-between rounded-[24px] border border-white/10 bg-white/[0.04] px-4 py-3">
                 <div>
                   <div className="text-xs uppercase tracking-[0.28em] text-slate-500">ScholarAI Preview</div>
@@ -132,7 +133,7 @@ const LandingPage: React.FC = () => {
                     initial={{ opacity: 0, x: 24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 + index * 0.1, duration: 0.45 }}
-                    className="premium-surface rounded-[26px] p-5"
+                    className="premium-surface rounded-[26px] p-5 transition-transform duration-300 hover:-translate-y-1"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
