@@ -1,0 +1,133 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: scholarships
+    // Fields:
+    //   - name: string (required)
+    //   - university: string (required)
+    //   - country: string (required)
+    //   - amount: string
+    //   - deadline: string
+    //   - matchScore: number
+    //   - difficulty: string (Low, Medium, High)
+    //   - tags: list
+    //   - description: string
+    //   - eligibility: list
+    //   - documents: list
+    //   - steps: list
+    //   - officialLink: string
+    //   - createdAt: timestamp
+    //
+    // Collection: users
+    // Fields:
+    //   - uid: string (required)
+    //   - name: string
+    //   - email: string (required)
+    //   - country: string
+    //   - degree: string (Bachelor, Master, PhD)
+    //   - field: string
+    //   - gpa: number
+    //   - ielts: string
+    //   - budget: number
+    //   - preferredCountries: string
+    //   - createdAt: timestamp
+    //
+    // Collection: users/{userId}/applications
+    // Fields:
+    //   - scholarshipId: string (required)
+    //   - userId: string (required)
+    //   - status: string (Not Started, In Progress, Applied, Accepted, Rejected)
+    //   - progress: number
+    //   - tasks: list of maps
+    //   - createdAt: timestamp
+    //
+    // Collection: users/{userId}/saved
+    // Fields:
+    //   - scholarshipId: string (required)
+    //   - userId: string (required)
+    //   - createdAt: timestamp
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "sanjain.dev@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidScholarship(data) {
+      return data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             data.university is string && data.university.size() > 0 && data.university.size() < 200 &&
+             data.country is string && data.country.size() > 0 && data.country.size() < 100;
+    }
+
+    function isValidUser(data) {
+      return data.uid is string && data.uid == request.auth.uid &&
+             data.email is string && data.email.size() > 0 && data.email.size() < 100;
+    }
+
+    function isValidApplication(data) {
+      return data.scholarshipId is string &&
+             data.userId is string && data.userId == request.auth.uid &&
+             data.status in ['Not Started', 'In Progress', 'Applied', 'Accepted', 'Rejected'];
+    }
+
+    function isValidSaved(data) {
+      return data.scholarshipId is string &&
+             data.userId is string && data.userId == request.auth.uid;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /scholarships/{scholarshipId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isAdmin() && isValidScholarship(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && isValidUser(request.resource.data) &&
+                      request.resource.data.role == resource.data.role; // Prevent role escalation
+      allow delete: if isAdmin();
+
+      match /applications/{applicationId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow create: if isOwner(userId) && isValidApplication(request.resource.data);
+        allow update: if isOwner(userId) && isValidApplication(request.resource.data);
+        allow delete: if isOwner(userId) || isAdmin();
+      }
+
+      match /saved/{savedId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow create: if isOwner(userId) && isValidSaved(request.resource.data);
+        allow update: if isOwner(userId) && isValidSaved(request.resource.data);
+        allow delete: if isOwner(userId) || isAdmin();
+      }
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

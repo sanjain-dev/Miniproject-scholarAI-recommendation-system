@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Student profile information for scholarship matching.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "country": { "type": "string" },
+        "degree": { "type": "string", "enum": ["Bachelor", "Master", "PhD"] },
+        "field": { "type": "string" },
+        "gpa": { "type": "number" },
+        "ielts": { "type": "string" },
+        "budget": { "type": "number" },
+        "preferredCountries": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Scholarship": {
+      "title": "Scholarship",
+      "description": "Information about a scholarship opportunity.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "university": { "type": "string" },
+        "country": { "type": "string" },
+        "amount": { "type": "string" },
+        "deadline": { "type": "string" },
+        "matchScore": { "type": "number" },
+        "difficulty": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "description": { "type": "string" },
+        "eligibility": { "type": "array", "items": { "type": "string" } },
+        "documents": { "type": "array", "items": { "type": "string" } },
+        "steps": { "type": "array", "items": { "type": "string" } },
+        "officialLink": { "type": "string", "format": "uri" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "university", "country"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "A student's application for a specific scholarship.",
+      "type": "object",
+      "properties": {
+        "scholarshipId": { "type": "string" },
+        "userId": { "type": "string" },
+        "status": { "type": "string", "enum": ["Not Started", "In Progress", "Applied", "Accepted", "Rejected"] },
+        "progress": { "type": "number" },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "completed": { "type": "boolean" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["scholarshipId", "userId", "status"]
+    },
+    "SavedScholarship": {
+      "title": "Saved Scholarship",
+      "description": "A scholarship bookmarked by a user.",
+      "type": "object",
+      "properties": {
+        "scholarshipId": { "type": "string" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["scholarshipId", "userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document."
+    },
+    "/scholarships/{scholarshipId}": {
+      "schema": "Scholarship",
+      "description": "Global scholarship database."
+    },
+    "/users/{userId}/applications/{applicationId}": {
+      "schema": "Application",
+      "description": "User's scholarship applications."
+    },
+    "/users/{userId}/saved/{savedId}": {
+      "schema": "SavedScholarship",
+      "description": "User's bookmarked scholarships."
+    }
+  }
+}
