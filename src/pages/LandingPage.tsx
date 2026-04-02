@@ -64,7 +64,7 @@ const LandingPage: React.FC = () => {
               transition={{ duration: 0.55, delay: 0.1 }}
               className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl"
             >
-              ScholarAI helps students search smarter, compare faster, and move confidently with a refined scholarship platform built for real global opportunities.
+              International ScholarAI helps students search smarter, compare faster, and move confidently with a refined platform built for real global opportunities.
             </motion.p>
 
             <motion.div
@@ -114,7 +114,7 @@ const LandingPage: React.FC = () => {
             <div className="premium-ring soft-shimmer relative overflow-hidden rounded-[34px] border border-white/12 bg-[radial-gradient(circle_at_top_left,rgba(245,201,118,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(210,154,57,0.12),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02)),rgba(7,14,28,0.92)] p-6 shadow-[0_30px_100px_rgba(2,8,23,0.5)]">
               <div className="mb-6 flex items-center justify-between rounded-[24px] border border-white/10 bg-white/[0.04] px-4 py-3">
                 <div>
-                  <div className="text-xs uppercase tracking-[0.28em] text-slate-500">ScholarAI Preview</div>
+                  <div className="text-xs uppercase tracking-[0.28em] text-slate-500">International ScholarAI Preview</div>
                   <div className="display-font mt-1 text-xl font-bold">Global Match Board</div>
                 </div>
                 <div className="rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1 text-xs font-semibold text-amber-100">
@@ -191,7 +191,7 @@ const LandingPage: React.FC = () => {
 
       <section className="w-full max-w-7xl px-4 py-24">
         <div className="mb-14 text-center">
-          <div className="text-xs uppercase tracking-[0.34em] text-slate-500">Why ScholarAI</div>
+          <div className="text-xs uppercase tracking-[0.34em] text-slate-500">Why International ScholarAI</div>
           <h2 className="display-font mt-4 text-4xl font-bold md:text-5xl">Crafted to feel fast, sharp, and high-trust.</h2>
         </div>
 

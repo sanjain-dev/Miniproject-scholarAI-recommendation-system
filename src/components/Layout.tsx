@@ -49,7 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children, user }) => {
             </div>
             <div className="flex flex-col">
               <span className="display-font text-xl font-bold tracking-tight bg-gradient-to-r from-white via-amber-100 to-stone-400 bg-clip-text text-transparent">
-                ScholarAI
+                International ScholarAI
               </span>
               <span className="hidden text-[10px] uppercase tracking-[0.36em] text-slate-500 md:block">
                 Global Scholarship Intelligence
@@ -130,7 +130,7 @@ const Layout: React.FC<LayoutProps> = ({ children, user }) => {
                 <GraduationCap className="text-white w-6 h-6" />
               </div>
               <div>
-                <span className="display-font text-xl font-bold">ScholarAI</span>
+                <span className="display-font text-xl font-bold">International ScholarAI</span>
                 <div className="text-[10px] uppercase tracking-[0.32em] text-slate-500">Precision Scholarship Discovery</div>
               </div>
             </div>
@@ -156,7 +156,7 @@ const Layout: React.FC<LayoutProps> = ({ children, user }) => {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-12 border-t border-white/8 px-4 pt-8 text-center text-sm text-slate-500">
-          © {new Date().getFullYear()} ScholarAI. All rights reserved.
+          © {new Date().getFullYear()} International ScholarAI. All rights reserved.
         </div>
       </footer>
     </div>

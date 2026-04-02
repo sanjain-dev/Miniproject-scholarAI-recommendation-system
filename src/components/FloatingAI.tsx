@@ -27,7 +27,7 @@ const FloatingAI: React.FC = () => {
                     <Bot className="w-5 h-5" />
                   </div>
                   <div>
-                    <CardTitle className="display-font text-base font-bold">ScholarAI Assistant</CardTitle>
+                    <CardTitle className="display-font text-base font-bold">International ScholarAI Assistant</CardTitle>
                     <div className="text-[11px] uppercase tracking-[0.24em] text-amber-100/70">Quick Support</div>
                   </div>
                 </div>

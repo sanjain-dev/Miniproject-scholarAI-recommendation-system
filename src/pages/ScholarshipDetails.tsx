@@ -98,7 +98,7 @@ const ScholarshipDetails: React.FC = () => {
       ? scholarship.steps
       : deriveApplicationSteps(scholarship || {});
   const shareText = scholarship
-    ? `Check out ${scholarship.name} on ScholarAI: ${applyLink}`
+    ? `Check out ${scholarship.name} on International ScholarAI: ${applyLink}`
     : "";
   const daysLeft = scholarship?.deadline ? getDaysLeft(scholarship.deadline) : null;
 

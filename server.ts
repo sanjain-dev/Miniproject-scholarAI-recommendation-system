@@ -10,7 +10,7 @@ async function startServer() {
 
   // API Routes
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", message: "ScholarAI API is running" });
+    res.json({ status: "ok", message: "International ScholarAI API is running" });
   });
 
   // Mock Scholarship API
@@ -48,7 +48,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`ScholarAI Server running on http://localhost:${PORT}`);
+    console.log(`International ScholarAI Server running on http://localhost:${PORT}`);
   });
 }
 

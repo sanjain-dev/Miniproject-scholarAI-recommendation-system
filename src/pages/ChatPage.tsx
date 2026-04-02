@@ -17,7 +17,7 @@ interface Message {
 const INITIAL_MESSAGE: Message = {
   id: "1",
   role: "assistant",
-  content: "Hello! I'm your ScholarAI assistant. I can help you find scholarships, explain eligibility requirements, or suggest application strategies. How can I help you today?",
+  content: "Hello! I'm your International ScholarAI assistant. I can help you find scholarships, explain eligibility requirements, or suggest application strategies. How can I help you today?",
   timestamp: new Date(),
 };
 
@@ -188,7 +188,7 @@ const ChatPage: React.FC = () => {
           </form>
           <div className="mt-3 flex items-center justify-center gap-2 text-[10px] text-slate-500 uppercase font-bold tracking-widest">
             <Sparkles className="w-3 h-3" />
-            Powered by ScholarAI Intelligence
+            Powered by International ScholarAI Intelligence
           </div>
         </div>
       </Card>

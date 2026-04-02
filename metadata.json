@@ -1,5 +1,5 @@
 {
-  "name": "ScholarAI",
+  "name": "International ScholarAI",
   "description": "Personalized International Scholarship Finder with AI-powered recommendations and tracking.",
   "requestFramePermissions": [
     "geolocation"

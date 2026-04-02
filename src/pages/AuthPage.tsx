@@ -174,7 +174,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode }) => {
             <CardDescription className="mx-auto max-w-sm text-base">
               {mode === "login"
                 ? "Enter your credentials to access your account"
-                : "Join ScholarAI to start your scholarship journey"}
+                : "Join International ScholarAI to start your global scholarship journey"}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">

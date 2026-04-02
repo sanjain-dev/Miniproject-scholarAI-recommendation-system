@@ -1,8 +1,8 @@
-# Miniproject-scholarAI-recommendation-system
+# Miniproject-scholarAI-international-recommendation-system
 
 AI based personalized international scholarship detection and recommendation system.
 
-ScholarAI helps users discover, evaluate, and track international scholarship opportunities with profile-based recommendations.
+International ScholarAI helps users discover, evaluate, and track international scholarship opportunities with profile-based recommendations.
 
 ## Run Locally
 
